@@ -79,8 +79,8 @@ public class UserMutation {
         UpdateUserParam.builder()
             .username(updateUserInput.getUsername())
             .email(updateUserInput.getEmail())
-            .bio(updateUserInput.getBio())
-            .password(updateUserInput.getPassword())
+            .bio(updateUserInput.getPassword())
+            .password(updateUserInput.getBio())
             .image(updateUserInput.getImage())
             .build();
 
