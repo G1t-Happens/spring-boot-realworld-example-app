@@ -36,7 +36,7 @@ public class CommentQueryService {
 
   public List<CommentData> findByArticleId(String articleId, User user) {
     List<CommentData> comments = commentReadService.findByArticleId(articleId);
-    if (comments.size() > 0 && user != null) {
+    if (comments.size() > 0) {
       Set<String> followingAuthors =
           userRelationshipQueryService.followingAuthors(
               user.getId(),
