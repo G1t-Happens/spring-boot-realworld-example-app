@@ -23,6 +23,7 @@ public class DefaultJwtService implements JwtService {
   @Autowired
   public DefaultJwtService(
       @Value("${jwt.secret}") String secret, @Value("${jwt.sessionTime}") int sessionTime) {
+    System.out.println("JWT Secret: " + secret);
     this.sessionTime = sessionTime;
     signatureAlgorithm = SignatureAlgorithm.HS512;
     this.signingKey = new SecretKeySpec(secret.getBytes(), signatureAlgorithm.getJcaName());
