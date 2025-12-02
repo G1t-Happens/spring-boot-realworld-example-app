@@ -21,11 +21,7 @@ public class Page {
     }
   }
 
-  private void setLimit(int limit) {
-    if (limit > MAX_LIMIT) {
-      this.limit = MAX_LIMIT;
-    } else if (limit > 0) {
-      this.limit = limit;
+    private void setLimit(int limit) {
+        setLimit(limit);
     }
-  }
 }
