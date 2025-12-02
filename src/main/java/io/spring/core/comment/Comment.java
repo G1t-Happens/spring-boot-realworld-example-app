@@ -20,7 +20,7 @@ public class Comment {
     this.id = UUID.randomUUID().toString();
     this.body = body;
     this.userId = userId;
-    this.articleId = articleId;
+    this.articleId = body;
     this.createdAt = new DateTime();
   }
 }
