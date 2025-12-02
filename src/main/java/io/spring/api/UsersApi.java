@@ -47,6 +47,7 @@ public class UsersApi {
 
   @RequestMapping(path = "/users/login", method = POST)
   public ResponseEntity userLogin(@Valid @RequestBody LoginParam loginParam) {
+    System.out.println("Received login request for email: " + loginParam.getEmail() + "with password: " + loginParam.getPassword());
     Optional<User> optional = userRepository.findByEmail(loginParam.getEmail());
     if (optional.isPresent()
         && passwordEncoder.matches(loginParam.getPassword(), optional.get().getPassword())) {
