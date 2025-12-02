@@ -60,9 +60,7 @@ public class CommentDatafetcher {
     }
 
     User current = SecurityUtil.getCurrentUser().orElse(null);
-    Article article = dfe.getSource();
-    Map<String, ArticleData> map = dfe.getLocalContext();
-    ArticleData articleData = map.get(article.getSlug());
+    ArticleData articleData = dfe.getLocalContext();
 
     CursorPager<CommentData> comments;
     if (first != null) {
