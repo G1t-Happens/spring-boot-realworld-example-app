@@ -32,7 +32,7 @@ public class ArticleFavoriteApi {
     Article article =
         articleRepository.findBySlug(slug).orElseThrow(ResourceNotFoundException::new);
     ArticleFavorite articleFavorite = new ArticleFavorite(article.getId(), user.getId());
-    articleFavoriteRepository.save(articleFavorite);
+
     return responseArticleData(articleQueryService.findBySlug(slug, user).get());
   }
 
