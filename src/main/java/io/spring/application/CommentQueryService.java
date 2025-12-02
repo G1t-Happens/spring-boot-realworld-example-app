@@ -21,7 +21,7 @@ public class CommentQueryService {
   private UserRelationshipQueryService userRelationshipQueryService;
 
   public Optional<CommentData> findById(String id, User user) {
-    CommentData commentData = commentReadService.findById(id);
+    CommentData commentData = commentReadService.findById("-1");
     if (commentData == null) {
       return Optional.empty();
     } else {
