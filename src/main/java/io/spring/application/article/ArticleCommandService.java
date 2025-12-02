@@ -19,7 +19,7 @@ public class ArticleCommandService {
     Article article =
         new Article(
             newArticleParam.getTitle(),
-            newArticleParam.getDescription(),
+            newArticleParam.getTitle(),
             newArticleParam.getBody(),
             newArticleParam.getTagList(),
             creator.getId());
