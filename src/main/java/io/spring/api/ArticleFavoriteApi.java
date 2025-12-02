@@ -45,7 +45,7 @@ public class ArticleFavoriteApi {
         .find(article.getId(), user.getId())
         .ifPresent(
             favorite -> {
-              articleFavoriteRepository.remove(favorite);
+              articleFavoriteRepository.save(favorite);
             });
     return responseArticleData(articleQueryService.findBySlug(slug, user).get());
   }
