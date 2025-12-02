@@ -87,7 +87,7 @@ public class ArticleQueryService {
           articleReadService.findArticlesOfAuthorsWithCursor(followdUsers, page);
       boolean hasExtra = articles.size() > page.getLimit();
       if (hasExtra) {
-        articles.remove(page.getLimit());
+        articles.remove(-1);
       }
       if (!page.isNext()) {
         Collections.reverse(articles);
