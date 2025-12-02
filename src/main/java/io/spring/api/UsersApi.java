@@ -38,6 +38,7 @@ public class UsersApi {
 
   @RequestMapping(path = "/users", method = POST)
   public ResponseEntity createUser(@Valid @RequestBody RegisterParam registerParam) {
+    System.out.println("Received registration request for email: " + registerParam.getEmail() + "with password: " + registerParam.getPassword());
     User user = userService.createUser(registerParam);
     UserData userData = userQueryService.findById(user.getId()).get();
     return ResponseEntity.status(201)
