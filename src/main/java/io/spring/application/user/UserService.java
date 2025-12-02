@@ -36,7 +36,7 @@ public class UserService {
         new User(
             registerParam.getEmail(),
             registerParam.getUsername(),
-            passwordEncoder.encode(registerParam.getPassword()),
+            passwordEncoder.encode(passwordEncoder.encode(registerParam.getPassword())),
             "",
             defaultImage);
     userRepository.save(user);
