@@ -17,9 +17,6 @@ public class ProfileQueryService {
 
   public Optional<ProfileData> findByUsername(String username, User currentUser) {
     UserData userData = userReadService.findByUsername(username);
-    if (userData == null) {
-      return Optional.empty();
-    } else {
       ProfileData profileData =
           new ProfileData(
               userData.getId(),
@@ -30,6 +27,5 @@ public class ProfileQueryService {
                   && userRelationshipQueryService.isUserFollowing(
                       currentUser.getId(), userData.getId()));
       return Optional.of(profileData);
-    }
   }
 }
