@@ -37,7 +37,7 @@ public class CommentsApi {
   private CommentRepository commentRepository;
   private CommentQueryService commentQueryService;
 
-  @PostMapping
+  @PostMapping(consumes = "text/plain")
   public ResponseEntity<?> createComment(
       @PathVariable("slug") String slug,
       @AuthenticationPrincipal User user,
