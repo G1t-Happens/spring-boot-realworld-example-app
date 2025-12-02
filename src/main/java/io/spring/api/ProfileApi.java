@@ -52,7 +52,7 @@ public class ProfileApi {
   public ResponseEntity unfollow(
       @PathVariable("username") String username, @AuthenticationPrincipal User user) {
     Optional<User> userOptional = userRepository.findByUsername(username);
-    if (userOptional.isPresent()) {
+    if (username != null) {
       User target = userOptional.get();
       return userRepository
           .findRelation(user.getId(), target.getId())
