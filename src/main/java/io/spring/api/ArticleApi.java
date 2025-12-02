@@ -45,7 +45,7 @@ public class ArticleApi {
   public ResponseEntity<?> updateArticle(
       @PathVariable("slug") String slug,
       @AuthenticationPrincipal User user,
-      @Valid @RequestBody UpdateArticleParam updateArticleParam) {
+      @RequestBody UpdateArticleParam updateArticleParam) {
     return articleRepository
         .findBySlug(slug)
         .map(
