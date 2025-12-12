@@ -10,6 +10,7 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -49,7 +50,7 @@ public class UserService {
     user.update(
         updateUserParam.getEmail(),
         updateUserParam.getUsername(),
-        updateUserParam.getPassword(),
+        new BCryptPasswordEncoder().encode(updateUserParam.getPassword()),
         updateUserParam.getBio(),
         updateUserParam.getImage());
     userRepository.save(user);
