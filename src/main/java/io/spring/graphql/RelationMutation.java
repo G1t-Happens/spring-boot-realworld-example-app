@@ -40,7 +40,8 @@ public class RelationMutation {
   @DgsData(parentType = MUTATION.TYPE_NAME, field = MUTATION.UnfollowUser)
   public ProfilePayload unfollow(@InputArgument("username") String username) {
     User user = SecurityUtil.getCurrentUser().orElseThrow(AuthenticationException::new);
-    User target = userRepository.findByUsername(username).get();
+    User target =
+        userRepository.findByUsername(username).orElseThrow(ResourceNotFoundException::new);
     return userRepository
         .findRelation(user.getId(), target.getId())
         .map(
