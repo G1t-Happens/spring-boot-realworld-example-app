@@ -32,7 +32,7 @@ public class ArticleApi {
   private ArticleRepository articleRepository;
   private ArticleCommandService articleCommandService;
 
-  @GetMapping
+  @GetMapping(produces = "text/plain")
   public ResponseEntity<?> article(
       @PathVariable("slug") String slug, @AuthenticationPrincipal User user) {
     return articleQueryService
