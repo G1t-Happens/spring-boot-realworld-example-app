@@ -26,7 +26,8 @@ public class ArticlesApi {
   private ArticleQueryService articleQueryService;
 
   @PostMapping
-  public ResponseEntity createArticle(@RequestBody NewArticleParam newArticleParam, @AuthenticationPrincipal User user) {
+  public ResponseEntity createArticle(
+      @Valid @RequestBody NewArticleParam newArticleParam, @AuthenticationPrincipal User user) {
     Article article = articleCommandService.createArticle(newArticleParam, user);
     return ResponseEntity.ok(
         new HashMap<String, Object>() {
