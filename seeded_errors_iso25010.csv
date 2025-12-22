@@ -1,0 +1,30 @@
+id,filename,start_line,end_line,method_start,method_end,iso_category,error_description,injection_method,severity
+E001,UserService.java,53,53,47,58,Performance,The updateUser method creates PasswordEncoder local per request rather than as a singleton,detected,medium
+E002,Article.java,45,45,33,49,Reliability,The Article Constructor throws a NullPointerException if tagList is null or contains null elements,detected,high
+E003,ArticleFavoriteApi.java,35,35,29,37,Functionality,The favoriteArticle method doesnt saves the favorite article into database,injected,critical
+E004,ArticleCommandService.java,21,22,18,28,Functionality,The createArticle saves the articles with wrong data into database(title data into description),injected,critical
+E005,CommentQueryService.java,39,51,37,54,Reliability,Missing null check on user in findByArticleId → NullPointerException when called without user,injected,high
+E006,UserService.java,40,40,35,45,Functionality,Double encryption of the password using a password encoder in createUser method,injected,high
+E007,ProfileApi.java,56,56,51,68,Reliability,userOptional.get() is called in method unfollow without first checking if a user was found → can throw NoSuchElementException,injected,high
+E008,UsersApi.java,42,42,40,47,Security,CreateUser logs include user passwords in plaintext - potentially exposing them in logs accessible to operators or attackers,injected,critical
+E009,UsersApi.java,52,52,49,60,Performance,The userLogin method creates PasswordEncoder local per request rather than as a singleton,injected,medium
+E010,CommentsApi.java,40,40,40,51,Compatibility,Incorrect MIME/consume type in controller. The API expects JSON but text/plain is declared. Clients sending JSON may fail,injected,high
+E011,CommentsApi.java,67,67,67,85,Compatibility,The deleteComment method uses GET to delete data which violates HTTP rules and can cause security and consistency issues,injected,high
+E012,ArticleQueryService.java,90,90,80,98,Functionality,The findUserFeedWithCursor calls articles.remove() which always fails with an IndexOutOfBoundsException because the provided index is outside the valid range,injected,high
+E013,ArticleFavoriteApi.java,48,48,39,51,Functionality,The unfavoriteArticle method saves articles instead of removing them,injected,critical
+E014,CommentQueryService.java,24,24,23,35,Functionality,The findById method always tries to findById with index -1 instead of the passed id,injected,critical
+E015,CommentQueryService.java,58,59,56,85,Reliability,The findByArticleIdWithCursor method attemptes to call isEmpty() on a null comments list -> NullPointer,injected,high
+E016,Page.java,24,26,24,26,Performance,The setLimit method is infinitely recursive -> continues consuming system resources until the application eventually crashes,injected,critical
+E017,ProfileQueryService.java,19,28,18,30,Reliability,findByUsername throws NullPointerException when userData is null. The crash happens at the first argument of the ProfileData constructor,injected,high
+E018,Comment.java,23,23,19,25,Functionality,The Comment Constructor sets the wrong value for the articleId,injected,high
+E019,MyBatisArticleFavoriteRepository.java,21,21,19,24,Functionality,Logical fault: the save method checks for userId instead of article IDs -> executed every time which can lead to either duplicates or a runtime crash,injected,high
+E020,DefaultJwtService.java,26,26,23,30,Security,The DefaultJwtSerice Constructor logs/prints the jwt secret to the console/logs,injected,critical
+E021,DefaultJwtService.java,34,37,32,38,Security,The toToken Method omitted the signWith() call -> parsing the token with parseClaimsJws(token) will throw a SignatureException because the parser expects a signed JWT,injected,critical
+E022,Util.java,6,6,5,7,Functionality,The isEmpty Method always returns true instead of checking for null and isEmpty -> possbile nullpointer,injected,medium
+E023,AuthorizationService.java,10,10,9,11,Security,The canWriteArticle compares the user id with itself -> always true -> everyone can write articles,injected,critical
+E024,CommentDatafetcher.java,63,63,50,98,Reliability,The articleComments method returns a Map<String/ArticleData> via dfe.getLocalContext but the code treats it directly as an ArticleData object -> causing a ClassCastException at runtime,injected,high
+E025,SecurityUtil.java,12,14,11,15,Reliability,The getCurrentUser method can crash on any non-standard authentication typically causing a NullPointerException or ClassCastException,injected,high
+E026,UserMutation.java,82,83,69,92,Security,The updateUser method writes the password into the bio and the bio into the password -> leaking passwords,injected,critical
+E027,ArticleApi.java,35,35,35,42,Compatibility,The article endpoint produces text/plain instead of JSON which breaks interoperability with standard REST clients,injected,high
+E028,ArticlesApi.java,28,28,28,38,Compatibility,Incorrect MIME type in the createArticle controller method. The API expects JSON but text/plain is declared. Clients sending JSON may fail,injected,high
+
